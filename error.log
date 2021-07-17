@@ -1,0 +1,6 @@
+ERROR	2021/07/14 10:33:32 main.go:28: listen tcp :4000: bind: address already in use
+exit status 1
+make: *** [run] Error 1
+ERROR	2021/07/14 10:36:29 main.go:36: listen tcp :4000: bind: address already in use
+exit status 1
+make: *** [run] Error 1
