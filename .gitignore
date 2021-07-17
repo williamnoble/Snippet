@@ -3,3 +3,8 @@
 /.idea/modules.xml
 /.idea/saveactions_settings.xml
 /.idea/snippetbox.iml
+/.idea/dataSources.xml
+/go.sum
+/info.log
+/error.log
+/.idea/sqldialects.xml
