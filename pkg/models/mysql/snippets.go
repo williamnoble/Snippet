@@ -10,7 +10,8 @@ type SnippetModel struct {
 	DB *sql.DB
 }
 
-func (m *SnippetModel) Insert(title string, content string, expires int) (int, error) {
+// Insert a single snippet to the database
+func (m *SnippetModel) Insert(title string, content string, expires string) (int, error) {
 	stmt := `INSERT INTO snippets(title, content, created, expires)
 	VALUES(?, ?, UTC_TIMESTAMP(), DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? DAY))`
 
@@ -25,6 +26,7 @@ func (m *SnippetModel) Insert(title string, content string, expires int) (int, e
 	return int(id), nil
 }
 
+//Get a single Snippet by ID from the database
 func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 	// Select where expiry date is greater (i.e. later) than today.
 	stmt := `SELECT id, title, content, created, expires FROM snippets
@@ -47,9 +49,10 @@ func (m *SnippetModel) Get(id int) (*models.Snippet, error) {
 	return snippet, nil
 }
 
+//Latest retrieves the Latest snippets form a database (limit to the most recent 10 rows)
 func (m *SnippetModel) Latest() ([]*models.Snippet, error) {
 	stmt := `SELECT id, title, content, created, expires FROM snippets
-	WHERE expires > UTC_TIMESTAMP ORDER BY created ASC LIMIT 10`
+	WHERE expires > UTC_TIMESTAMP ORDER BY created LIMIT 10`
 
 	rows, err := m.DB.Query(stmt)
 	if err != nil {

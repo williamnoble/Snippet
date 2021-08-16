@@ -8,3 +8,6 @@
 /info.log
 /error.log
 /.idea/sqldialects.xml
+/tls/cert.pem
+/tls/key.pem
+/tls/
