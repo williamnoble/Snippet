@@ -11,3 +11,5 @@
 /tls/cert.pem
 /tls/key.pem
 /tls/
+/.idea/
+.DS_STORE
